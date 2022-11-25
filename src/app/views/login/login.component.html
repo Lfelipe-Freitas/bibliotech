@@ -4,11 +4,12 @@
     <button (click)="signInGoogle()">
       <img src="" alt="">
     </button>
-    <form>
+    <form action="" [formGroup]="formLogin">
       <input type="email" class="email" placeholder="E-mail" formControlName="email">
       <input type="password" class="senha" placeholder="Senha" formControlName="senha">
       <button (click)="signInEmailAndPassword()">Entrar</button>
     </form>
-    <span>Ainda não é cadastrado? <a routerLink="/cadastro">Cadastre-se</a></span>
+    <span>Ainda não é cadastrado? <a routerLink="/cadastrar-usuario">Cadastre-se</a></span>
   </div>
 </div>
+

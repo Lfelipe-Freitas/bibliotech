@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
 import { User } from './../../models/user';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     fb: FormBuilder,
     private authService: AuthService,
+    private notification: NotificationService,
     private router: Router) {
     this.formLogin = fb.group({
       email: ['', [Validators.required]],
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   public signInGoogle(): void {
     this.authService.authenticateByGoogle().subscribe(credencials => {
-      alert("Bem-vindo(a)")
+      this.notification.showMessage("Bem-vindo(a)")
       this.router.navigate(["/home"])
     })
   }
@@ -37,12 +39,12 @@ export class LoginComponent implements OnInit {
     if(this.formLogin.valid) {
       const user: User = this.formLogin.value
     this.authService.autenticateByEmailAndPassword(user).subscribe(credentials => {
-      alert("Bem-vindo(a)")
+      this.notification.showMessage("Bem-vindo(a)")
       this.router.navigate(["/home"])
     })
     }
     else {
-      alert("Dados inválidos")
+      this.notification.showMessage("Dados inválidos")
     }
   }
 }
