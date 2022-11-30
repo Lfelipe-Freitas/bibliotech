@@ -13,13 +13,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CadastroComponent } from './views/cadastro/cadastro.component';
 import { HomeComponent } from './views/home/home.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { DetailsComponent } from './components/details/details.component';
+import { HeaderComponent } from './components/header/header.component';
+import { NovoLivroComponent } from './views/novo-livro/novo-livro.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { EditarLivroComponent } from './views/editar-livro/editar-livro.component';
+import { NovoAluguelComponent } from './views/novo-aluguel/novo-aluguel.component';
+import { AlugueisComponent } from './views/alugueis/alugueis.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CadastroComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent,
+    DetailsComponent,
+    HeaderComponent,
+    NovoLivroComponent,
+    EditarLivroComponent,
+    NovoAluguelComponent,
+    AlugueisComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +44,8 @@ import { HomeComponent } from './views/home/home.component';
     ReactiveFormsModule,
     AngularFireAuthModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

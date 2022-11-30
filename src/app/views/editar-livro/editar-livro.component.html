@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Editar Livro</h1>
+    <form #formEdit="ngForm">
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Título</mat-label>
+            <input type="text" matInput placeholder="Título" name="titulo" [(ngModel)]="bibliotec.titulo" required>
+        </mat-form-field>
+
+        <div class="double-width">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Gênero</mat-label>
+                <input type="text" matInput placeholder="Gênero" name="genero" [(ngModel)]="bibliotec.genero" required>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Autor(a)</mat-label>
+                <input type="text" matInput placeholder="Autor(a)" name="autor" [(ngModel)]="bibliotec.autor" required>
+            </mat-form-field>
+        </div>
+
+        <label for="foto">Selecione uma foto</label>
+        <input type="file" class="upload-photo" (change)="uploadFile($event)">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoadUpload"></mat-progress-bar>
+
+        <div class="double-width">
+            <button class="full-width btn-submit" mat-raised-button (click)="updateBibliotec(formEdit)" routerLink="/dashboard">Editar</button>
+            <a class="full-width btn-close" mat-raised-button routerLink="/dashboard">Cancelar</a>
+        </div>
+    </form>
+</div>

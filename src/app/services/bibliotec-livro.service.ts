@@ -1,4 +1,4 @@
-import { Bibliotec } from './../models/bibliotec';
+import { BibliotecLivro } from './../models/bibliotecLivro';
 import { NotificationService } from '../services/notification.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -8,15 +8,16 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BibliotecService {
+export class BibliotecLivroService {
 
   constructor(
     private firestore: AngularFirestore,
-    private notification: NotificationService
+    private notification: NotificationService,
   ) { }
 
-  public createBibliotec(bibliotec: Bibliotec): Observable<any> {
-    const promise = this.firestore.collection("bibliotec").add(bibliotec);
+
+  public createBibliotecLivro(bibliotecLivro: BibliotecLivro): Observable<any> {
+    const promise = this.firestore.collection("bibliotecLivro").add(bibliotecLivro);
     return from(promise).pipe(
       catchError(error => {
         this.notification.showMessage("Erro ao cadastrar.");
@@ -27,13 +28,13 @@ export class BibliotecService {
   }
 
   public findAll(): Observable<any> {
-    const promise = this.firestore.collection("bibliotec").get();
+    const promise = this.firestore.collection("bibliotecLivro").get();
     return from(promise).pipe(
       map((response: any) => {
         return response.docs.map((doc: any) => {
-          const bibliotec: Bibliotec = doc.data() as Bibliotec;
-          bibliotec.id = doc.id;
-          return bibliotec;
+          const bibliotecLivro: BibliotecLivro = doc.data() as BibliotecLivro;
+          bibliotecLivro.id = doc.id;
+          return bibliotecLivro;
         })
       }),
       catchError(error => {
@@ -45,10 +46,10 @@ export class BibliotecService {
   }
 
   public findById(id: string): Observable<any> {
-    const promise = this.firestore.collection("bibliotec").doc(id).get();
+    const promise = this.firestore.collection("bibliotecLivro").doc(id).get();
     return from(promise).pipe(
       map(doc => {
-        const bibliotec: Bibliotec = doc.data() as Bibliotec;
+        const bibliotec: BibliotecLivro = doc.data() as BibliotecLivro;
         bibliotec.id = doc.id;
         return bibliotec;
       }),
@@ -60,8 +61,8 @@ export class BibliotecService {
     );
   }
 
-  public deleteBibliotec(id: string): Observable<any> {
-    const promise = this.firestore.collection("bibliotec").doc(id).delete();
+  public deleteBibliotecLivro(id: string) {
+    const promise = this.firestore.collection("bibliotecLivro").doc(id).delete();
     return from(promise).pipe(
       catchError(error => {
         this.notification.showMessage("Erro ao excluir.");
@@ -71,8 +72,21 @@ export class BibliotecService {
     );
   }
 
-  public updateBibliotec(bibliotec: Bibliotec) {
-    const promise = this.firestore.collection("bibliotec").doc(bibliotec.id).update(bibliotec);
+  public updateBibliotec(bibliotecLivro: BibliotecLivro) {
+    const promise = this.firestore.collection("bibliotecLivro").doc(bibliotecLivro.id).update(bibliotecLivro);
+    return from(promise).pipe(
+      catchError(error => {
+        this.notification.showMessage("Erro ao atualizar.");
+        console.error(error);
+        return EMPTY;
+      })
+    );
+  }
+
+
+
+  public updateBibliotecLivro(bibliotecLivro: BibliotecLivro) {
+    const promise = this.firestore.collection("bibliotecLivro").doc(bibliotecLivro.id).update(bibliotecLivro);
     return from(promise).pipe(
       catchError(error => {
         this.notification.showMessage("Erro ao atualizar.");

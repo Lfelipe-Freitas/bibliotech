@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<div class="container">
+    <h1>Título</h1>
+    <form [formGroup]="formBibliotecLivro">
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Título</mat-label>
+            <input type="text" matInput placeholder="Título" formControlName="titulo">
+        </mat-form-field>
+
+        <div>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Nome do Leitor</mat-label>
+                <input type="text" matInput placeholder="" formControlName="nomeLeitor">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Data do Aluguel</mat-label>
+                <input type="date" matInput placeholder="Data do Aluguel" formControlName="dataAluguel">
+            </mat-form-field>
+
+        </div>
+
+        <div class="double-width">
+            <button class="full-width btn-submit" mat-raised-button (click)="createBibliotecLivro()" routerLink="/alugueis" type="button">Cadastrar</button>
+            <a class="full-width btn-close" mat-raised-button routerLink="/dashboard">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+

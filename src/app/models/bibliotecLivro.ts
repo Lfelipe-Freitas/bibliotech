@@ -1,8 +1,9 @@
+import { Bibliotec } from 'src/app/models/bibliotec';
 export interface BibliotecLivro {
   id?: string
-  titulo: string
-  autor: string
-  genero: string
-  lancamento: Date
-  fotoUrl: string
+  livro: Bibliotec
+  nomeLeitor: string
+  dataAluguel: Date
+  status: string
+  switcher: boolean
 }

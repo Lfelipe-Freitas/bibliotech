@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Novo Livro</h1>
+    <form [formGroup]="formBibliotec">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Título</mat-label>
+            <input type="text" matInput placeholder="Título" formControlName="titulo">
+        </mat-form-field>
+
+        <div class="double-width">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Gênero</mat-label>
+                <input type="text" matInput placeholder="Gênero" formControlName="genero">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Autor(a)</mat-label>
+                <input type="text" matInput placeholder="Autor(a)" formControlName="autor">
+            </mat-form-field>
+        </div>
+
+        <label for="foto">Selecione uma foto</label>
+        <input type="file" class="upload-photo" (change)="uploadFile($event)">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoadUpload"></mat-progress-bar>
+
+        <div class="double-width">
+            <button type="button" class="full-width btn-submit" mat-raised-button (click)="createBibliotec()" routerLink="/dashboard">Cadastrar</button>
+            <a class="full-width btn-close" mat-raised-button routerLink="/dashboard">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+

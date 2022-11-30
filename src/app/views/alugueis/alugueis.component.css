@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+
+}
+
+.table-container {
+  height: 70vh;
+  overflow: auto;
+}
+
+
+.btn-new {
+  position: absolute;
+  right: 5px;
+  bottom: 20px;
+  background-color: #517fdc;
+
+}

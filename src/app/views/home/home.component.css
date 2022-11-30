@@ -1,0 +1,21 @@
+.home-container {
+  padding-top: 64px;
+  width: 100%;
+  height: 100%;
+  background-color: #2a5b24;
+  background-image: url("../../../assets/Slytherin.png");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: 100% 100% ;
+
+}
+
+.home-container h1{
+  width: 25%;
+  font-size: 8vh;
+  line-height: 10vh;
+  position: absolute;
+  left: 20%;
+  top: 30%;
+}
+

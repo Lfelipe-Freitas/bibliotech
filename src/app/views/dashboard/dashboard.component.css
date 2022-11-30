@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+
+}
+
+.table-container {
+  height: 70vh;
+  overflow: auto;
+}
+
+.capa {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+.btn-new {
+  position: absolute;
+  right: 5px;
+  bottom: 20px;
+  background-color: #517fdc;
+
+}
